@@ -1,0 +1,88 @@
+// Example Test Data
+
+const dataSuccessCase = 
+[
+      { 
+            testCase: 'OT-PROCESSING-001', 
+            description : 'ประมวลผลค่าล่วงเวลา ในวันทำงาน : โดยพนักงานระบุเวลาที่ขอ OT ไม่อยู่ในช่วงเวลาก่อนเวลาเข้างาน พักเที่ยง และหลังเข้างาน',
+            inputDate: '03/01/2566', 
+            inputStartHour: '19', 
+            inputStartMins: '00', 
+            inputEndHour: '21', 
+            inputEndMins: '00', 
+            inputTask: '01',
+            expectedMessageProcessing: 'ไม่ได้ประมวลผลรายวัน หรือ เวลาที่ขอไม่ได้ OT', 
+            expectedTimePay : '00:00-00:00' , 
+            expected1D:' - ', 
+            expected15AB: ' - ', 
+            expected2D: ' - ', 
+            expected3AB: ' - ', 
+            expected15D: ' - ', 
+            expected1N: ' - ', 
+            expected15N: ' - ', 
+            expected2N: ' - '
+      },
+
+      { 
+            testCase: 'OT-PROCESSING-002', 
+            description : 'ประมวลผลค่าล่วงเวลา ในวันทำงาน : โดยพนักงานระบุเวลาที่ขอ OT เป็นช่วงเวลาก่อนเข้างาน เท่านั้น',
+            inputDate: '04/01/2566', 
+            inputStartHour: '04', 
+            inputStartMins: '00', 
+            inputEndHour: '07', 
+            inputEndMins: '00', 
+            inputTask: '02',
+            expectedMessageProcessing: 'คำนวณค่าล่วงเวลาเรียบร้อย', 
+            expectedTimePay : '04:00-07:00' , 
+            expected1D:' - ', 
+            expected15AB: ' 03:00 ', 
+            expected2D: ' - ', 
+            expected3AB: ' - ', 
+            expected15D: ' - ', 
+            expected1N: ' - ', 
+            expected15N: ' - ', 
+            expected2N: ' - '
+      },
+
+      { 
+            testCase: 'OT-PROCESSING-003', 
+            description : 'ประมวลผลค่าล่วงเวลา ในวันทำงาน : โดยพนักงานระบุเวลาที่ขอ OT เป็นช่วงเวลาพักเที่ยง เท่านั้น',
+            inputDate: '03/01/2566', 
+            inputStartHour: '12', 
+            inputStartMins: '00', 
+            inputEndHour: '13', 
+            inputEndMins: '00', 
+            inputTask: '03',
+            expectedMessageProcessing: 'คำนวณค่าล่วงเวลาเรียบร้อย', 
+            expectedTimePay : '12:00-13:00' , 
+            expected1D:' - ', 
+            expected15AB: ' - ', 
+            expected2D: ' - ', 
+            expected3AB: ' 01:00 ', 
+            expected15D: ' - ', 
+            expected1N: ' - ', 
+            xpected15N: ' - ', 
+            expected2N: ' - '},
+
+      { 
+            testCase: 'OT-PROCESSING-004', 
+            description : 'ประมวลผลค่าล่วงเวลา ในวันทำงาน : โดยพนักงานระบุเวลาที่ขอ OT เป็นช่วงเวลาหลังเลิกงาน เท่านั้น',
+            inputDate: '03/01/2566', 
+            inputStartHour: '17', 
+            inputStartMins: '00', 
+            inputEndHour: '19', 
+            inputEndMins: '00', 
+            inputTask: '04',
+            expectedMessageProcessing: 'คำนวณค่าล่วงเวลาเรียบร้อย', 
+            expectedTimePay : '17:00-19:00' , 
+            expected1D:' - ', 
+            expected15AB: ' - ', 
+            expected2D: ' - ', 
+            expected3AB: ' - ', 
+            expected15D: ' 01:00 ', 
+            expected1N: ' 01:00 ', 
+            expected15N: ' - ', 
+            expected2N: ' - '},
+];       
+
+export {dataSuccessCase};
